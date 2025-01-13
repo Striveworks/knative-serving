@@ -220,8 +220,8 @@ func (r *reconciler) reconcilePublicEndpoints(ctx context.Context, sks *netv1alp
 	pvtReady := presources.ReadyAddressCount(pvtEps)
 	sharedReady := presources.ReadyAddressCount(activatorEps)
 
-	logger.Infof("SKS is in %s mode; has %d endpoints in %s; %d activator endpoints",
-		sks.Spec.Mode, pvtReady, psn, sharedReady)
+	logger.Infof("SKS is in %s mode; has %d endpoints in %s::%s; %d activator endpoints in %s::%s",
+		sks.Spec.Mode, pvtReady, sks.Namespace, psn, sharedReady, namespace, networking.ActivatorServiceName)
 
 	// Spew is expensive and there might be a lof of endpoints.
 	if dlogger.Core().Enabled(zap.DebugLevel) {
