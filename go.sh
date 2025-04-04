@@ -1,4 +1,5 @@
 #!/bin/bash
+export DOCKER_HOST=unix:///run/user/1000/podman/podman.sock
 if [[ "$(find vendor/knative.dev/networking -maxdepth 0 -mindepth 0 -type l | wc -l)" == 0 ]]; then
   pushd vendor/knative.dev
   for D in networking pkg; do
